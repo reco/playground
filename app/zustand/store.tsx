@@ -20,7 +20,11 @@ interface Actions {
 export const useStore = create<State & { actions: Actions }>((set) => ({
   ...defaultState,
   actions: {
+
+    // Setting loading state
     setLoading: (loading: boolean) => set({ loading }),
+
+    // Get user and bookmarks from the server
     getUser: async () => {
       set({ loading: true });
 
@@ -29,6 +33,8 @@ export const useStore = create<State & { actions: Actions }>((set) => ({
 
       set({ user, bookmarks, loading: false });
     },
+
+    // Reset state
     reset: () => set(defaultState),
   },
 }));

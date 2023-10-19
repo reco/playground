@@ -1,8 +1,9 @@
 "use client";
 
 import styles from "./styles.module.css";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { StateProvider, StoreContext } from "./context";
+import { Button } from "@/components/button";
 
 import { LOADING, LOADING_DONE, getUser, reset } from "./reducer";
 
@@ -38,37 +39,37 @@ function LoadingIndicator() {
 function Buttons() {
   const { dispatch } = useContext(StoreContext);
   return (
-    <>
-      <button
+    <div className="flex gap-1 justify-center py-3">
+      <Button
         onClick={() => {
           dispatch({ type: LOADING });
         }}
       >
         Loading
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           dispatch({ type: LOADING_DONE });
         }}
       >
         Loading Done
-      </button>
+      </Button>
 
-      <button
+      <Button
         onClick={() => {
           getUser(dispatch);
         }}
       >
         Get User
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           reset(dispatch);
         }}
       >
         Reset
-      </button>
-    </>
+      </Button>
+    </div>
   );
 }
 
