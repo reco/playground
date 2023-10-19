@@ -1,0 +1,35 @@
+.section {
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+}
+.package {
+  flex: 0 0 100%;
+  background: orange;
+  padding: 0.5rem;
+}
+.content {
+}
+.col1 {
+}
+.col2 {
+}
+
+@container (min-width: 480px) {
+  .package {
+    background: red;
+    flex: 0 0 50%;
+  }
+}
+
+@container (min-width: 640px) {
+  .package {
+    background: yellow;
+  }
+}
+
+@container (min-width: 820px) {
+  .package {
+    background: green;
+  }
+}
