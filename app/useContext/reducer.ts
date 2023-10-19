@@ -14,7 +14,9 @@ export const TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK";
 export const RESET = "RESET";
 
 /**
- * Api Functions
+ * Get user and bookmarks
+ * @param {Function} dispatch
+ * @returns {void}
  */
 export async function getUser(dispatch: Dispatch<Action>) {
   dispatch({ type: LOADING });
@@ -27,15 +29,20 @@ export async function getUser(dispatch: Dispatch<Action>) {
   }
 }
 
+/**
+ * Reset state
+ * @param {function} dispatch
+ * @returns {void}
+ */
 export function reset(dispatch: Dispatch<Action>) {
   dispatch({ type: RESET });
 }
 
 /**
- * Reducer Function
- * @param state
- * @param action
- * @returns state
+ * Reducer function
+ * @param {StoreContextData} state - current state
+ * @param {Action} action - action object
+ * @returns {StoreContextData} - new state
  */
 
 export function reducer(state: StoreContextData, action: Action) {

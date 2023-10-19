@@ -59,7 +59,7 @@ function Buttons() {
 export default function Page() {
   return (
     <div>
-      <h1>useContext with selector</h1>
+      <h1>zustand</h1>
       <section className={styles.section}>
         <Buttons />
         <LoadingIndicator />
