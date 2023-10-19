@@ -2,6 +2,7 @@
 
 import styles from "./styles.module.css";
 import { useStore } from "./store";
+import { Button } from "@/components/button";
 
 function Bookmakrs() {
   const bookmarks = useStore((state) => state.bookmarks);
@@ -35,24 +36,24 @@ function LoadingIndicator() {
 function Buttons() {
   const { setLoading, getUser, reset } = useStore((state) => state.actions);
   return (
-    <>
-      <button
+    <div className="flex gap-1 justify-center py-3">
+      <Button
         onClick={() => {
           setLoading(true);
         }}
       >
         Loading
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           setLoading(false);
         }}
       >
         Loading Done
-      </button>
-      <button onClick={getUser}>Get User</button>
-      <button onClick={reset}>Reset</button>
-    </>
+      </Button>
+      <Button onClick={getUser}>Get User</Button>
+      <Button onClick={reset}>Reset</Button>
+    </div>
   );
 }
 
