@@ -15,3 +15,7 @@ export interface State {
   user: User | null;
   bookmarks: Bookmark[];
 }
+
+export interface Props {
+  [key: string]: any;
+}

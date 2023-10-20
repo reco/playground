@@ -1,9 +1,10 @@
 "use client";
+import type { State, Props } from "./types";
+import type { ComponentType } from "react";
 
 import { create } from "zustand";
 import { api } from "./api";
-
-import type { User, Bookmark, State } from "./types";
+import { forwardRef } from "react";
 
 export const defaultState: State = {
   loading: false,
@@ -20,7 +21,6 @@ interface Actions {
 export const useStore = create<State & { actions: Actions }>((set) => ({
   ...defaultState,
   actions: {
-
     // Setting loading state
     setLoading: (loading: boolean) => set({ loading }),
 
@@ -38,3 +38,15 @@ export const useStore = create<State & { actions: Actions }>((set) => ({
     reset: () => set(defaultState),
   },
 }));
+
+
+export function withStore(
+  useStore: (selector: any, equalityFn?: any) => any,
+  selector: any
+) {
+  return (Component: ComponentType<Props>) =>
+    // eslint-disable-next-line react/display-name
+    forwardRef((props: Props, ref) => (
+      <Component ref={ref} {...props} {...useStore(selector)} />
+    ));
+}

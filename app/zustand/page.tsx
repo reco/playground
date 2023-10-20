@@ -1,7 +1,10 @@
 "use client";
 
+import type { State } from './types';
+
+import { Component } from "react";
 import styles from "./styles.module.css";
-import { useStore } from "./store";
+import { useStore, withStore } from "./store";
 import { Button } from "@/components/button";
 
 function Bookmakrs() {
@@ -57,6 +60,19 @@ function Buttons() {
   );
 }
 
+class UserClassComponent extends Component {
+  render() {
+    return (
+      <div>
+        <h2>User ClassComponent</h2>
+        <pre>{JSON.stringify(useStore.getState().user, null, 2)}</pre>
+      </div>
+    );
+  }
+}
+
+const UserClassComponentWithStore = withStore(useStore, (state:State) => state.user)(UserClassComponent);
+
 export default function Page() {
   return (
     <div>
@@ -64,6 +80,7 @@ export default function Page() {
       <section className={styles.section}>
         <Buttons />
         <LoadingIndicator />
+        <UserClassComponentWithStore />
         <Bookmakrs />
         <User />
       </section>
