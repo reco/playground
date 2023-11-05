@@ -3,7 +3,7 @@
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { StateProvider, StoreContext } from "./context";
-import { Button } from "@/components/button";
+import { Button } from "@/components/Button";
 
 import { LOADING, LOADING_DONE, getUser, reset } from "./reducer";
 

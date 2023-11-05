@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import { todosStore } from "./todo";
 
+import { Button } from "@/components/Button";
 import Link from "next/link";
 
 export default function Index() {
@@ -23,13 +24,16 @@ export default function Index() {
         </Link>
       </p>
 
-      <button className="search" onClick={() => todosStore.addTodo()}>
-        ADD
-      </button>
+      <Button onClick={() => todosStore.addTodo()} className="m-6">
+        Add
+      </Button>
 
-      <ul className="m0 p0">
+      <ul className="p-0 m-0">
         {todos.map((todo) => (
-          <li className="lstn p1 b my05 b-fff" key={todo.id}>
+          <li
+            className="p-3 my-3 font-bold list-none bg-white shadow-md"
+            key={todo.id}
+          >
             {todo.text}
           </li>
         ))}

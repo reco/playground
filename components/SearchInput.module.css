@@ -1,0 +1,47 @@
+.wrapper {
+  display: inline-block;
+  position: relative;
+  border-radius: 9999px;
+  padding: 0.5em;
+  overflow: hidden;
+}
+.wrapper:before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: 100%;
+  aspect-ratio: 1/1;
+  z-index: -1;
+  transition: all 0.25s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  content: "";
+  background: conic-gradient(
+    from 0deg,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #80ff00,
+    #00ff00,
+    #00ff80,
+    #00ffff,
+    #0080ff,
+    #0000ff,
+    #8000ff,
+    #ff00ff,
+    #ff0080,
+    #ff0000
+  );
+}
+.wrapper__active:before {
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.input {
+  background: white;
+  focus: none;
+  padding: 0.5em;
+  border-radius: 9999px;
+  outline: 0;
+  text-align: center;
+  box-shadow: 0 0 0.5em 0.5em white;
+}

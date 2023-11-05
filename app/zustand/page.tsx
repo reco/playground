@@ -1,11 +1,10 @@
 "use client";
 
-import type { State } from './types';
+import type { State } from "./types";
 
 import { Component } from "react";
-import styles from "./styles.module.css";
 import { useStore, withStore } from "./store";
-import { Button } from "@/components/button";
+import { Button } from "@/components/Button";
 
 function Bookmakrs() {
   const bookmarks = useStore((state) => state.bookmarks);
@@ -39,7 +38,7 @@ function LoadingIndicator() {
 function Buttons() {
   const { setLoading, getUser, reset } = useStore((state) => state.actions);
   return (
-    <div className="flex gap-1 justify-center py-3">
+    <div className="flex justify-center gap-1 py-3">
       <Button
         onClick={() => {
           setLoading(true);
@@ -71,13 +70,16 @@ class UserClassComponent extends Component {
   }
 }
 
-const UserClassComponentWithStore = withStore(useStore, (state:State) => state.user)(UserClassComponent);
+const UserClassComponentWithStore = withStore(
+  useStore,
+  (state: State) => state.user
+)(UserClassComponent);
 
 export default function Page() {
   return (
     <div>
       <h1>zustand</h1>
-      <section className={styles.section}>
+      <section>
         <Buttons />
         <LoadingIndicator />
         <UserClassComponentWithStore />

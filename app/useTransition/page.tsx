@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { SearchInput } from "@/components/SearchInput";
 import { useTransition, useState } from "react";
 import { createProducts, filterProducts } from "../../utils";
 
@@ -9,9 +10,12 @@ const products = createProducts();
 
 function ProductList({ products }: { products: string[] }) {
   return (
-    <ul className="m0 p0">
+    <ul className="p-0 m-0">
       {products.map((product) => (
-        <li className="lstn p1 b my05 b-fff" key={product}>
+        <li
+          className="p-3 my-3 font-bold list-none bg-white shadow-md"
+          key={product}
+        >
           {product}
         </li>
       ))}
@@ -38,7 +42,7 @@ export default function Page() {
       <h1>useTransition</h1>
       <h2>hook</h2>
 
-      <p className="lh125 my3">
+      <p className="my-3 lh125">
         The useTransition hook allows us to specify some state updates as not as
         important. These state updates will be executed in parallel with other
         state updates, but the rendering of the component will not wait for
@@ -50,11 +54,10 @@ export default function Page() {
         </Link>
       </p>
 
-      <input
-        className="search"
+      <SearchInput
         type="text"
-        placeholder="..."
         onChange={handleKeyDown}
+        className="text-2xl font-light m-7"
       />
       {isPending ? <p>Searching...</p> : null}
       <br />

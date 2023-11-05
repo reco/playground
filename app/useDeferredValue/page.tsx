@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SearchInput } from "@/components/SearchInput";
 
 import { useState, useDeferredValue } from "react";
 import { createProducts, filterProducts } from "../../utils";
@@ -10,9 +11,12 @@ const products = createProducts();
 function ProductListDeffered({ products }: { products: string[] }) {
   const defferedProducts = useDeferredValue(products);
   return (
-    <ul className="m0 p0">
+    <ul className="p-0 m-0">
       {defferedProducts.map((product) => (
-        <li className="lstn p1 b my05" key={product}>
+        <li
+          className="p-3 my-3 font-bold list-none bg-white shadow-md"
+          key={product}
+        >
           {product}
         </li>
       ))}
@@ -22,9 +26,12 @@ function ProductListDeffered({ products }: { products: string[] }) {
 
 function ProductList({ products }: { products: string[] }) {
   return (
-    <ul className="m0 p0">
+    <ul className="p-0 m-0">
       {products.map((product) => (
-        <li className="lstn p1 b my05" key={product}>
+        <li
+          className="p-3 my-3 font-bold list-none bg-white shadow-md"
+          key={product}
+        >
           {product}
         </li>
       ))}
@@ -44,7 +51,7 @@ export default function Page() {
       <h1>useDeferredValue</h1>
       <h2>hook</h2>
 
-      <p className="lh125 my3">
+      <p className="my-3 lh125">
         Returns a deferred version of the value that may “lag behind” it.
         <br />
         Very similar to useTransition. <br />
@@ -54,7 +61,11 @@ export default function Page() {
         </Link>
       </p>
 
-      <input className="search" type="text" onChange={handleKeyDown} />
+      <SearchInput
+        type="text"
+        onChange={handleKeyDown}
+        className="text-2xl font-light m-7"
+      />
       <br />
       <br />
       {/* fast */}
