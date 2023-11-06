@@ -14,8 +14,8 @@ export function VisualWrapper({
   }
 
   const color = rsc
-    ? "before:bg-gradient-radial-to-br before:from-black/80 before:via-black/80 before:to-black/10"
-    : "before:bg-gradient-radial-to-br before:from-rose-500/90 before:via-rose-500/90 before:to-pink-500/20";
+    ? "before:bg-gradient-to-br before:from-black/80 before:via-black/80 before:to-black/10"
+    : "before:bg-gradient-to-br before:from-rose-500/90 before:via-rose-500/90 before:to-pink-500/20";
 
   return (
     <div

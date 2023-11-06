@@ -18,9 +18,9 @@ export default function Page() {
           </Link>
         </p>
         <div className="flex items-start min-h-screen gap-2 py-2">
-          <StoreInitializer name="Shoes" price={100} />
+          <StoreInitializer name="Phones" price={100} />
           <Product
-            description="The best shoes money can buy."
+            description="The best phone money can buy."
             image="/iphone.jpg"
           />
           <Add />
