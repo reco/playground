@@ -1,0 +1,6 @@
+{
+  "id": "1",
+  "name": "Mr. State machine",
+  "description": "A state machine that can be in one of three states: 'idle', 'running', 'stopped'.",
+  "image": "/gradient.jpg"
+}

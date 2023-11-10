@@ -7,6 +7,7 @@ import { useStore } from "./store";
 
 export function Add() {
   const { name, price } = useStore();
+  console.log("*** Render Add");
   return (
     <VisualWrapper name="AddToCart">
       <h1 className="text-xl font-bold">{name}</h1>

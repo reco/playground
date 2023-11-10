@@ -10,20 +10,37 @@ export const LOADING = "LOADING";
 export const LOADING_DONE = "LOADING_DONE";
 export const ERROR = "ERROR";
 export const GET_USER = "GET_USER";
+export const GET_BOOKMARKS = "GET_BOOKMARKS";
 export const TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK";
 export const RESET = "RESET";
 
 /**
- * Get user and bookmarks
+ * Get user
  * @param {Function} dispatch
  * @returns {void}
  */
 export async function getUser(dispatch: Dispatch<Action>) {
   dispatch({ type: LOADING });
+  dispatch({ type: RESET });
   try {
-    const user = await api("https://jsonplaceholder.typicode.com/users/1");
-    const bookmarks = await api("https://jsonplaceholder.typicode.com/posts");
-    dispatch({ type: GET_USER, payload: { user, bookmarks } });
+    const user = await api("/user.json");
+    dispatch({ type: GET_USER, payload: { user } });
+  } catch (error) {
+    dispatch({ type: ERROR });
+  }
+}
+
+/**
+ * Get bookmarks
+ * @param {Function} dispatch
+ * @returns {void}
+ */
+export async function getBookmarks(dispatch: Dispatch<Action>) {
+  dispatch({ type: LOADING });
+  dispatch({ type: RESET });
+  try {
+    const bookmarks = await api("/bookmarks.json");
+    dispatch({ type: GET_BOOKMARKS, payload: { bookmarks } });
   } catch (error) {
     dispatch({ type: ERROR });
   }
@@ -56,8 +73,14 @@ export function reducer(state: StoreContextData, action: Action) {
   }
   // Get user
   if (action.type === GET_USER) {
-    const { user, bookmarks } = action.payload;
-    return { ...state, user, bookmarks, loading: false };
+    const { user } = action.payload;
+    return { ...state, user, loading: false };
+  }
+  // Get bookmarks
+  if (action.type === GET_BOOKMARKS) {
+    const { bookmarks } = action.payload;
+    console.log("** reducer: GET_BOOKMARKS: bookmarks:", bookmarks);
+    return { ...state, bookmarks, loading: false };
   }
   // Reset state
   if (action.type === RESET) {

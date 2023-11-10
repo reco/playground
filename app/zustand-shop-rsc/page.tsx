@@ -26,7 +26,7 @@ export default function Page() {
             Reference
           </Link>
         </p>
-        <div className="flex items-start min-h-screen gap-2 py-2">
+        <div className="flex items-start gap-2 py-2">
           <Product
             description="The best phone money can buy."
             image="/iphone.jpg"
@@ -34,16 +34,18 @@ export default function Page() {
           <Add />
           <Cart />
         </div>
-
-        <p>
-          For SCs, we set the state with `useStore.setState(data)`. This data
-          will be availabe on the client!
+        <p className="py-8">
+          For SCs, we set the state with `useStore.setState(data)`.
+          <br />
+          This data will be availabe on the client!
           <br />
           <br />
-          For the CCs We create a StoreInitializer CC which gets the data from
-          the server component passed.
+          For the CCs We create a StoreInitializer CC which gets the data passed
+          from the server component. Unfortunatley all CC will render once on
+          the client.
           <br />
-          This way we can also pick an choose what data the client store has.
+          This way we can pick an choose what data the client store has. No need
+          to send the whole store down the wire.
         </p>
       </section>
     </>

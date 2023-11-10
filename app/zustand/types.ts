@@ -1,13 +1,14 @@
 export interface User {
   id: number;
   name: string;
-  username: string;
-  email: string;
+  description: string;
+  image: string;
 }
 
 export interface Bookmark {
   id: number;
   title: string;
+  url: string;
 }
 
 export interface State {

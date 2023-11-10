@@ -4,7 +4,6 @@ import type { ComponentType } from "react";
 
 import { create } from "zustand";
 import { api } from "./api";
-import { forwardRef } from "react";
 
 export const defaultState: State = {
   loading: false,
@@ -15,38 +14,43 @@ export const defaultState: State = {
 interface Actions {
   setLoading: (loading: boolean) => void;
   getUser: () => Promise<void>;
+  getBookmarks: () => Promise<void>;
   reset: () => void;
+  delayedLoadingDone: () => void;
 }
 
-export const useStore = create<State & { actions: Actions }>((set) => ({
+export const useStore = create<State & { actions: Actions }>((set, get) => ({
   ...defaultState,
   actions: {
     // Setting loading state
     setLoading: (loading: boolean) => set({ loading }),
 
+    delayedLoadingDone: () => {
+      setTimeout(() => {
+        set({ loading: false });
+      }, 400);
+    },
+
     // Get user and bookmarks from the server
     getUser: async () => {
+      get().actions.reset();
       set({ loading: true });
 
-      const user = await api("https://jsonplaceholder.typicode.com/users/1");
-      const bookmarks = await api("https://jsonplaceholder.typicode.com/posts");
+      const user = await api("/user.json");
+      set({ user });
+      get().actions.delayedLoadingDone();
+    },
 
-      set({ user, bookmarks, loading: false });
+    getBookmarks: async () => {
+      get().actions.reset();
+      set({ loading: true });
+
+      const bookmarks = await api("/bookmarks.json");
+      set({ bookmarks });
+      get().actions.delayedLoadingDone();
     },
 
     // Reset state
     reset: () => set(defaultState),
   },
 }));
-
-
-export function withStore(
-  useStore: (selector: any, equalityFn?: any) => any,
-  selector: any
-) {
-  return (Component: ComponentType<Props>) =>
-    // eslint-disable-next-line react/display-name
-    forwardRef((props: Props, ref) => (
-      <Component ref={ref} {...props} {...useStore(selector)} />
-    ));
-}

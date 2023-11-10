@@ -7,6 +7,7 @@ import { VisualWrapper } from "@/components/VisualWrapper";
 
 export function Cart() {
   const cartTotal = useStore((state) => state.cartTotal);
+  console.log("*** Render Cart");
   return (
     <VisualWrapper name="CartTotal">
       <div className="flex flex-col">

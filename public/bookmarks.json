@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "title": "Today",
+    "url": "http://www.today.com/"
+  },
+  {
+    "id": "2",
+    "title": "Yesterday",
+    "url": "http://www.yesterday.com/"
+  }
+]

@@ -13,7 +13,7 @@ export function Product({
 }) {
   return (
     <VisualWrapper rsc name="ProductInfo">
-      <Image src={image} alt="Product Name" width={600} height={488} />
+      <Image src={image} alt="Product Name" width={600} height={338} />
       <h1 className="pt-2 mt-2 text-3xl font-bold border-t-2 border-black/10">
         {useStore.getState().name}
       </h1>
