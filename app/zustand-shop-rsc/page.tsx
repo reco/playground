@@ -7,16 +7,17 @@ import { Add } from "./add";
 import { useStore } from "./store";
 
 export default function Page() {
+  // Data we would fetch on the server
   const data = {
     name: "iPhone",
     price: 100,
+    colors: ["red", "blue", "green"], // data only on the server
   };
-
-  useStore.setState(data);
 
   return (
     <>
-      <StoreInitializer name="Phones" price={100} />
+      {/* Data we need on the clinet we pass to sStoreInitializer */}
+      <StoreInitializer name={data.name} price={data.price} />
       <section>
         <h1>zustand shop RSC</h1>
         <h2>state management</h2>
@@ -28,20 +29,21 @@ export default function Page() {
         </p>
         <div className="flex items-start gap-2 py-2">
           <Product
-            description="The best phone money can buy."
+            description={`${
+              data.name
+            } is the best phone money can buy. Its only $${
+              data.price
+            } today. You can buy it in the following colors: ${data.colors.join(
+              ", "
+            )}.`}
             image="/iphone.jpg"
           />
           <Add />
           <Cart />
         </div>
         <p className="py-8">
-          For SCs, we set the state with `useStore.setState(data)`.
-          <br />
-          This data will be availabe on the client!
-          <br />
-          <br />
-          For the CCs We create a StoreInitializer CC which gets the data passed
-          from the server component. Unfortunatley all CC will render once on
+          For the CCs We create a StoreInitializer which gets the data passed
+          from the server component. Unfortunatley all CC will re-render once on
           the client.
           <br />
           This way we can pick an choose what data the client store has. No need
