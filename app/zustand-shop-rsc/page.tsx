@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Cart } from "./cart";
 import { Product } from "./product";
 import { Add } from "./add";
-import { useStore } from "./store";
 
 export default function Page() {
   // Data we would fetch on the server
@@ -16,7 +15,7 @@ export default function Page() {
 
   return (
     <>
-      {/* Data we need on the clinet we pass to sStoreInitializer */}
+      {/* Data we need on the clinet */}
       <StoreInitializer name={data.name} price={data.price} />
       <section>
         <h1>zustand shop RSC</h1>

@@ -12,7 +12,6 @@ export function StoreInitializer({
 }) {
   const initialized = useRef(false);
   if (!initialized.current) {
-    // console.log("StoreInitializer", { name, price });
     useStore.setState({ name, price });
     initialized.current = true;
   }
