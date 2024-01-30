@@ -17,16 +17,20 @@ export default function Page() {
           the client. This helps create predictable webpages and improve Core
           Web Vitals like Largest Contentful Paint (LCP) and First Input Delay
         </p>
-
+        <br />
         <h3>Enhanced DX</h3>
         <p>
           Server Components can make development more straightforward by
           allowing developers to work with a familiar React API while taking
           advantage of server-side rendering when necessary.
         </p>
-
+        <br />
         <h3>SEO</h3>
 
+        <p>
+          Seo seo seo ...
+        </p>
+        <br />
         <h3>Enhanced security</h3>
         <p>
           Sensitive data like auth tokens or API keys used in RSCs are executed
@@ -50,15 +54,31 @@ export default function Page() {
         <br />
 
         <Link
-          href={
-            "https://blog.webdevsimplified.com/2023-11/react-server-components/"
-          }
+          href="https://blog.webdevsimplified.com/2023-11/react-server-components/"
         >
           Article
         </Link>
 
+        <Link href="https://www.youtube.com/watch?v=rGPpQdbDbwo">
+        https://www.youtube.com/watch?v=rGPpQdbDbwo
+        </Link>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         <Server />
+        <br />
+        <br />
         <Client />
+        
+        <br />
+        <br />
+        <br />
+        <br />
       </section>
     </>
   );
