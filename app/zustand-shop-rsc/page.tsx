@@ -13,6 +13,8 @@ export default function Page() {
     colors: ["red", "blue", "green"], // data only on the server
   };
 
+  console.log("*** Server Component");
+
   return (
     <>
       {/* Data we need on the clinet */}
